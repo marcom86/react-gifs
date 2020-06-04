@@ -3,7 +3,7 @@ import giphy from 'giphy-api';
 
 import SearchBar from './search_bar.jsx';
 import Gif from './gif.jsx';
-import GifList from './gif-list.jsx';
+import GifList from './gif_list.jsx';
 
 class App extends Component {
   constructor (props) {
@@ -28,6 +28,12 @@ class App extends Component {
     });
   }
 
+  selectGif = (id) => {
+    this.setState({
+      selectedGifId: id
+    });
+  }
+
   render() {
     return (
       <div>
@@ -38,7 +44,7 @@ class App extends Component {
           </div>
         </div>
         <div className="right-scene">
-          <GifList gifs={this.state.gifs} />
+          <GifList gifs={this.state.gifs} selectGif={this.selectGif} />
         </div>
       </div>
     );
